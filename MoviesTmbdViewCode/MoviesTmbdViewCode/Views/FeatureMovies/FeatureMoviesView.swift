@@ -10,12 +10,15 @@ import UIKit
 class FeatureMoviesView: UIView {
     
     private lazy var moviesCollection: UICollectionView = {
-        let collection = UICollectionView()
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        
         
         let flowLayout = UICollectionViewFlowLayout()
-        collection.collectionViewLayout = flowLayout
+        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 26, bottom: 10, right: 26)
+        let collection = UICollectionView(frame: .zero,collectionViewLayout: flowLayout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MovieCollectionViewCell")
+        collection.dataSource = self
+        collection.delegate = self
+        
         return collection
     }()
     
@@ -25,6 +28,7 @@ class FeatureMoviesView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .green
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -58,11 +62,18 @@ extension FeatureMoviesView: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { fatalError() }
         cell.backgroundColor = .blue
         return cell
     }
     
     
+    
+}
+
+extension FeatureMoviesView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3, height: 200)
+    }
     
 }
