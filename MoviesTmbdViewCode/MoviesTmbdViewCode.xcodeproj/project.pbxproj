@@ -17,6 +17,7 @@
 		A93D3FEE2B4B7CB500AD639B /* MoviesTmbdViewCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D3FED2B4B7CB500AD639B /* MoviesTmbdViewCodeUITestsLaunchTests.swift */; };
 		A93D3FFD2B4B822500AD639B /* FeatureMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D3FFC2B4B822500AD639B /* FeatureMoviesView.swift */; };
 		A93D40012B4B871700AD639B /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D40002B4B871700AD639B /* MovieCollectionViewCell.swift */; };
+		A94C6F642B4C21C4008EB899 /* MoviesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94C6F632B4C21C4008EB899 /* MoviesCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A93D3FED2B4B7CB500AD639B /* MoviesTmbdViewCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTmbdViewCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A93D3FFC2B4B822500AD639B /* FeatureMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureMoviesView.swift; sourceTree = "<group>"; };
 		A93D40002B4B871700AD639B /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		A94C6F632B4C21C4008EB899 /* MoviesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				A93D40002B4B871700AD639B /* MovieCollectionViewCell.swift */,
+				A94C6F632B4C21C4008EB899 /* MoviesCollectionReusableView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				A93D3FCF2B4B7CB400AD639B /* FeatureMoviesViewController.swift in Sources */,
 				A93D40012B4B871700AD639B /* MovieCollectionViewCell.swift in Sources */,
 				A93D3FCB2B4B7CB400AD639B /* AppDelegate.swift in Sources */,
+				A94C6F642B4C21C4008EB899 /* MoviesCollectionReusableView.swift in Sources */,
 				A93D3FCD2B4B7CB400AD639B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

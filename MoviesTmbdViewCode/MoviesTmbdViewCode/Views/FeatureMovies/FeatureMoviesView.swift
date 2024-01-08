@@ -16,6 +16,7 @@ class FeatureMoviesView: UIView {
         let collection = UICollectionView(frame: .zero,collectionViewLayout: flowLayout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MovieCollectionViewCell")
+        collection.register(MoviesCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MoviesCollectionReusableView")
         collection.dataSource = self
         collection.delegate = self
         
@@ -67,6 +68,15 @@ extension FeatureMoviesView: UICollectionViewDelegate, UICollectionViewDataSourc
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MoviesCollectionReusableView", for: indexPath) as? MoviesCollectionReusableView else { fatalError() }
+            return header
+        }
+        return UICollectionReusableView()
+       }
+
+    
     
     
 }
@@ -74,6 +84,10 @@ extension FeatureMoviesView: UICollectionViewDelegate, UICollectionViewDataSourc
 extension FeatureMoviesView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 150)
     }
     
 }
