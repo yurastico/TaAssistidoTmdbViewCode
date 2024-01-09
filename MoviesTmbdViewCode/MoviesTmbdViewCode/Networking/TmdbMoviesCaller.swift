@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct TmdbMoviesCaller {
+    func getMovies() async throws {
+        
+    }
+}
