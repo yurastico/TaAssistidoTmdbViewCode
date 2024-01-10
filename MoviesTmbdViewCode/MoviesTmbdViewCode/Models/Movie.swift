@@ -22,4 +22,40 @@ struct Movie: Codable {
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+           case adult
+           case backdropPath = "backdrop_path"
+           case genreIds = "genre_ids"
+           case id
+           case originalLanguage = "original_language"
+           case originalTitle = "original_title"
+           case overview
+           case popularity
+           case posterPath = "poster_path"
+           case releaseDate = "release_date"
+           case title
+           case video
+           case voteAverage = "vote_average"
+           case voteCount = "vote_count"
+        
+        enum CodingKeys: String, CodingKey {
+               case adult
+               case backdropPath = "backdrop_path"
+               case genreIds = "genre_ids"
+               case id
+               case originalLanguage = "original_language"
+               case originalTitle = "original_title"
+               case overview
+               case popularity
+               case posterPath = "poster_path"
+               case releaseDate = "release_date"
+               case title
+               case video
+               case voteAverage = "vote_average"
+               case voteCount = "vote_count"
+           }
+        
+       }
+    
 }
