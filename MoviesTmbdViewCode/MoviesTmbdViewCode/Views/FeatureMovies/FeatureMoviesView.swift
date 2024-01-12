@@ -9,7 +9,8 @@ import UIKit
 
 class FeatureMoviesView: UIView {
     
-    private lazy var moviesCollection: UICollectionView = {
+    private var movies: [Movie] = []
+    lazy var moviesCollection: UICollectionView = {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 26, bottom: 10, right: 26)
@@ -36,6 +37,10 @@ class FeatureMoviesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func loadMovies(_ movies: [Movie]) {
+        self.movies = movies
+    }
+    
     private func setupView() {
         addSubviews()
         setupConstraints()
@@ -59,12 +64,14 @@ class FeatureMoviesView: UIView {
 
 extension FeatureMoviesView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { fatalError() }
-        cell.backgroundColor = .blue
+        
+        cell.setupCell(for: movies[indexPath.row])
+        
         return cell
     }
     
@@ -83,7 +90,7 @@ extension FeatureMoviesView: UICollectionViewDelegate, UICollectionViewDataSourc
 
 extension FeatureMoviesView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3, height: 200)
+        return CGSize(width: collectionView.frame.width / 3, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

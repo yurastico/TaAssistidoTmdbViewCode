@@ -47,10 +47,12 @@ class MoviesCollectionReusableView: UICollectionReusableView {
     }
     
     private func configConstraints() {
+        
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: topAnchor),
             segmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             headerLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor,constant: 8),
+            
             headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

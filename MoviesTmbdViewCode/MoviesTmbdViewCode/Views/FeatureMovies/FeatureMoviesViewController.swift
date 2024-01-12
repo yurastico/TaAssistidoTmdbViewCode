@@ -9,21 +9,31 @@ import UIKit
 
 class FeatureMoviesViewController: UIViewController {
 
-
-    
+    var movies: [Movie] = []
+    var moviesView: FeatureMoviesView?
     override func loadView() {
-        self.view = FeatureMoviesView()
+        self.moviesView = FeatureMoviesView()
+        self.view = moviesView
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Task {
-            try? await TmdbMoviesCaller().getMovies()
+            do {
+                movies = try await TmdbMoviesCaller().getMovies()
+                moviesView?.loadMovies(movies)
+                moviesView?.moviesCollection.reloadData()
+            } catch {
+                print(error)
+            }
         }
         
         // Do any additional setup after loading the view.
     }
     
 }
+
+
+
 

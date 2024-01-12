@@ -22,6 +22,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         label.text = "Forest Gump"
         label.font = .systemFont(ofSize: 18,weight: .medium)
         label.textColor = .black
+        label.numberOfLines = 2
         return label
     }()
     
@@ -45,6 +46,28 @@ class MovieCollectionViewCell: UICollectionViewCell {
         addSubview(titleLabel)
     }
     
+    func setupCell(for movie: Movie) {
+        titleLabel.text = movie.title
+        print(TmdbMoviesCaller().baseURL + movie.posterPath)
+        guard let url = URL(string: "https://api.themoviedb.org/3/" + movie.posterPath) else { return }
+        DispatchQueue.global().async { [weak self] in
+            
+            
+            Task {
+                guard let image = await TmdbMoviesCaller().getImage(for: movie.posterPath) else { return }
+                
+                self?.imageView.image = image
+            }
+              
+                   
+            
+        }
+        
+       
+        
+    }
+    
+    
     private func configConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
@@ -53,7 +76,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
             imageView.heightAnchor.constraint(equalToConstant: 200),
             
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 8),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 4),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
             
         ])
     }
